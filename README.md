@@ -1,21 +1,25 @@
 # 🔔 auto-skill-scout
 
 매일 정해진 시간에 당신의 **Claude Code 대화를 자동으로 분석**해서,
-당신의 **작업 현황을 브리프로 정리**하고 **딱 맞는 검증된 스킬 2~3개**를 추천해주는 **개인 비서 스킬**입니다.
+**작업 현황 브리프**와 **딱 맞는 검증된 스킬 2~3개**를 추천해주는 **개인 비서 스킬**입니다.
 
-## 🚀 1분 설정
+---
 
-```bash
-git clone https://github.com/Koo-bon/auto-skill-scout.git
-cp -r auto-skill-scout ~/.claude/skills/auto-skill-scout
+## 🚀 설치 (10초, 터미널 필요 없음)
+
+**Claude Code(데스크톱/CLI 앱)를 열고, 아래를 그대로 복사해서 붙여넣으세요:**
+
+```
+이 스킬 설치하고 매일 오전 9시에 실행되게 해줘:
+https://github.com/Koo-bon/auto-skill-scout
 ```
 
-Claude Code에서:
-```bash
-/schedule "auto-skill-scout" --daily 09:00
-```
+Claude가 알아서 다운로드하고, `~/.claude/skills/`에 설치하고, 스케줄까지 잡아줍니다.
+당신은 **"허용" 버튼만 한 번** 누르면 끝. ✅
 
-**완료!** 매일 09:00에 Claude에 알림이 옵니다. ✅
+> 💡 원하는 시간으로 바꾸려면 "오전 9시" 대신 "오후 2시"처럼 말하면 됩니다.
+
+---
 
 ## ✨ 뭘 하나?
 
@@ -28,89 +32,69 @@ Claude Code에서:
   ↓
 필요한 스킬 2~3개 추천 (GitHub 링크 포함)
   ↓
-Claude에 알림
+Claude 알림으로 전달
   ↓
 _scout-recommendations.md에 자동 저장
 ```
 
+---
+
 ## 📊 추천 예시
 
 ```
-📊 당신의 작업 현황
-
-요즘 당신은:
-• 이미지 처리 (오전 10-11시)
-• 팀 협업 (증가 추세)
-• 문서 작성 (주 3회)
+📋 당신이 자주 막혔던 문제 3가지
+1. 문서 서식 정리에 매번 시간 낭비
+2. "지난주에 뭘 했더라?" 회고가 흐릿함
+3. 커밋 메시지 작성이 매번 고민
 
 🎯 오늘 추천
 
-1️⃣ oh-my-claudecode
-   팀 협업 + 문서 자동화
+1️⃣ oh-my-claudecode — 협업 + 문서 자동화
+   💭 당신: "문서 서식 정리하는데 시간이 오래 걸려"
+   Before: 서식 정리 20분  →  After: 1명령 2분
    🔗 github.com/Koo-bon/oh-my-claudecode
 
-2️⃣ jezweb image-processing
-   배치 이미지 처리
-   🔗 github.com/jezweb/image-processing
+2️⃣ session-analyzer — 세션 분석 + 요약
+   💭 당신: "지난주에 뭘 했더라?"
+   Before: 회고 15분, 기억 의존  →  After: 30초 자동 요약
+   🔗 github.com/anthropics/skills
 
-3️⃣ claude-code-workflow
-   반복 작업 자동화
-   🔗 github.com/anthropics/skills/workflow
+3️⃣ git-master — 자동 커밋 메시지
+   💭 당신: "커밋 메시지 뭐라고 쓸지 고민돼"
+   Before: 메시지 작성 5분  →  After: 변경 스캔해서 자동 생성
+   🔗 github.com/anthropics/skills
 ```
 
-## ⚙️ 시간 설정
-
-```bash
-# 오전 8시
-/schedule "auto-skill-scout" --daily 08:00
-
-# 오후 2시
-/schedule "auto-skill-scout" --daily 14:00
-
-# 매주 월요일만
-/schedule "auto-skill-scout" --weekly mon 09:00
-```
-
-## 📁 데이터
-
-- 📝 **`_scout-recommendations.md`** — 매일의 추천 기록 자동 저장
-- 🔔 **Claude 알림** — 추가 설정 필요 없음
-
-## 🎯 특징
-
-- ✅ **완전 자동** — `/schedule` 한 줄로 설정 완료
-- ✅ **관리자 무관** — 별도의 승인이나 설정 필요 없음
-- ✅ **간결함** — 2~3개만 추천 (많이 안 뿌림)
-- ✅ **검증됨** — Reddit/GitHub 인기도 기반
-- ✅ **저장됨** — 모든 추천이 파일에 기록
-- ✅ **신뢰도** — 구체적 패턴(시간+요청+빈도) 기반 추천
-- ✅ **유연함** — 매일/주 1회, 시간 자유롭게 설정
-
-## ❓ FAQ
-
-**시간 바꾸고 싶으면?**
-```bash
-/schedule "auto-skill-scout" --daily 14:00
-```
-
-**지난 추천 봐요?**
-프로젝트 폴더의 `_scout-recommendations.md` 파일에 저장됩니다.
-
-**정말 내 패턴을 알 수 있나요?**
-네! [Before & After 사용 예시](BEFORE_AFTER.md)를 보면:
-- 📍 **시간**: "지난 3일간 오전 10-11시"
-- 🗣️ **요청**: "월요일 9:15 당신이 한 요청"
-- 💡 **추천**: "그걸 푸는 검증된 스킬"
-구체적인 패턴으로 추천합니다.
-
-**스케줄 확인?**
-```bash
-/schedule list
-```
+**핵심:** 추천이 무작위가 아니라 **당신이 실제로 한 말 + Before/After** 기반입니다.
 
 ---
 
-**GitHub**: https://github.com/Koo-bon/auto-skill-scout  
+## ⚙️ 시간 바꾸기 / 확인
+
+설치 후엔 Claude에게 말로 하면 됩니다:
+
+- 시간 변경: `"auto-skill-scout 실행 시간을 오후 2시로 바꿔줘"`
+- 스케줄 확인: `/schedule list`
+
+---
+
+## ❓ FAQ
+
+**Claude가 꺼져 있어도 오나요?**
+스케줄은 **Claude 앱이 열려 있을 때** 실행됩니다. 예약 시간에 앱이 꺼져 있었다면, **다음에 앱을 켤 때** 실행됩니다. (알림을 놓치지 않습니다.)
+
+**어디로 알림이 오나요?**
+Claude Code 앱 자체 알림으로 옵니다. Slack·이메일 설정이 필요 없습니다.
+
+**정말 내 패턴을 알 수 있나요?**
+네. 지난 7일 대화를 분석해서 **당신이 실제로 한 말**을 그대로 인용하고, 그 문제를 푸는 검증된 스킬을 추천합니다. → [Before & After 예시](BEFORE_AFTER.md)
+
+**지난 추천은 어디에?**
+프로젝트 폴더의 `_scout-recommendations.md`에 매일 자동 저장됩니다.
+
+---
+
+**GitHub**: https://github.com/Koo-bon/auto-skill-scout
 **License**: MIT
 
 Made with ❤️ by Koo-bon
